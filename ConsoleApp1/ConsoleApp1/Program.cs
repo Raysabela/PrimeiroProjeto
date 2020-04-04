@@ -22,14 +22,23 @@ namespace ConsoleApp1
             int numero1;
             int numero2;
             int resultado;
+            double numero1divide;
+            double numero2divide;
+            double resultadoDivide;
 
-            Console.WriteLine("Digite o primeiro numéro");
-            numero1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o segundo numéro");
-            numero2 = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Digite o primeiro número para somar");
+            //numero1 = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Digite o segundo número para somar");
+            //numero2 = int.Parse(Console.ReadLine());
+            //resultado = SomaDoisNumerosInteiros(numero1, numero2);
+            //Console.WriteLine("O resultado da soma é: " + resultado);
 
-            resultado = SomaDoisNumerosInteiros(numero1, numero2);
-            Console.WriteLine("O resultado é: " + resultado);
+            Console.Write("Digite o primeiro número para dividir ");
+            numero1divide = double.Parse(Console.ReadLine());
+            Console.Write("Digite o segundo número para dividir ");
+            numero2divide = double.Parse(Console.ReadLine());
+            resultadoDivide = DivideDoisNumerosFracionados(numero1divide, numero2divide);
+            Console.Write("O resultado da divisão é: " + resultadoDivide);
             Console.ReadKey();
 
 
@@ -40,7 +49,11 @@ namespace ConsoleApp1
             return a + b;
         }
 
+        public static double DivideDoisNumerosFracionados(double num1, double num2)
+        {
+            return num1 / num2;
 
+        }
         public static string RetornaNomeDePessoa()
         {
             return "Rafaela";
