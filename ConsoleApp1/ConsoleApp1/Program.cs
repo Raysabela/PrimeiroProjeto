@@ -17,66 +17,79 @@ namespace ConsoleApp1
             string é palavra
             DateTime para data
             double para número fracionado   
+            bool verdadeiro ou falso;
+
+            bolinha vermelha => breakpoint
+            debbugar => passaro código passo a passo - apertando F10 você passa linha a linha
+
              */
 
-            int numero1;
-            int numero2;
-            int resultado;
-            double numero1divide;
-            double numero2divide;
-            double resultadoDivide;
-            int numero1subtrair;
-            int numero2subtrair;
-            int resultadoSubtrair;
-            double numero1multiplica;
-            double numero2multiplica;
-            double resultadoMultiplicação;
 
-            //Console.WriteLine("Digite o primeiro número para somar");
-            //numero1 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("Digite o segundo número para somar");
-            //numero2 = int.Parse(Console.ReadLine());
-            //resultado = SomaDoisNumerosInteiros(numero1, numero2);
-            //Console.WriteLine("O resultado da soma é: " + resultado);
+            double numero1 = 0;
+            double numero2 = 0;
+            double resultado = 0;
+            double auxiliar = 0;
+            string entradaDoUsuario;
+            double opcao = 0;
 
-            //Console.Write("Digite o primeiro número para dividir ");
-            //numero1divide = double.Parse(Console.ReadLine());
-            //Console.Write("Digite o segundo número para dividir ");
-            //numero2divide = double.Parse(Console.ReadLine());
-            //resultadoDivide = DivideDoisNumerosFracionados(numero1divide, numero2divide);
-            //Console.Write("O resultado da divisão é: " + resultadoDivide);
-            //Console.ReadKey();
+            Console.WriteLine("Bem vindo(a)!");
 
-            //Console.Write("Digite o primeiro número para subtrair ");
-            //numero1subtrair = int.Parse(Console.ReadLine());
-            //Console.Write("Digite o segundo número para subtrair ");
-            //numero2subtrair = int.Parse(Console.ReadLine());
-            //resultadoSubtrair = SubtrairDoisNumerosInteiros(numero1subtrair, numero2subtrair);
-            //Console.Write("O resultado da subtração é: " + resultadoSubtrair);
-            //Console.ReadKey();
+            Console.Write("Digite o primeiro número: ");
+            entradaDoUsuario = Console.ReadLine();
+            numero1 = AtribuiNumeroValido(auxiliar, entradaDoUsuario);
 
-            Console.Write("Digite o primeiro número para multiplicar ");
-            numero1multiplica = double.Parse(Console.ReadLine());
-            Console.Write("Digitar o segundo número para multiplicar ");
-            numero2multiplica = double.Parse(Console.ReadLine());
-            resultadoMultiplicação = MultiplicarDoisNumerosFracionados(numero1multiplica, numero2multiplica);
-            Console.Write("O resultado da Multiplicação é: " + resultadoMultiplicação);
+            Console.Write("Digite o segundo número: ");
+            entradaDoUsuario = Console.ReadLine();
+            numero2 = AtribuiNumeroValido(auxiliar, entradaDoUsuario);
+
+            Console.WriteLine("O que você quer fazer com estes números? :\n 1 - Somar\n 2 - Subtrair\n 3 - Multiplicar\n 4 - Dividir");
+            entradaDoUsuario = Console.ReadLine();
+            opcao = AtribuiNumeroValido(auxiliar, entradaDoUsuario);
+
+
+            switch (opcao)
+            {
+                case 1:
+                    resultado = SomaDoisNumerosInteiros(numero1, numero2);
+                    break;
+                case 2:
+                    resultado = SubtrairDoisNumerosInteiros(numero1, numero2);
+                    break;
+                case 3:
+                    resultado = MultiplicarDoisNumerosFracionados(numero1, numero2);
+                    break;
+                case 4:
+                    resultado = DivideDoisNumerosFracionados(numero1, numero2);
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+
+            Console.WriteLine("O resultado da operação é: " + resultado);
             Console.ReadKey();
-
 
         }
 
-        public static int SomaDoisNumerosInteiros(int a, int b)
+        public static double SomaDoisNumerosInteiros(double a, double b)
         {
             return a + b;
         }
 
         public static double DivideDoisNumerosFracionados(double num1, double num2)
         {
+            if (num2 == 0)
+            {
+                Console.WriteLine("Não é possível dividir por zero!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
             return num1 / num2;
 
         }
-        public static int SubtrairDoisNumerosInteiros(int num1sub, int num2sub)
+        public static double SubtrairDoisNumerosInteiros(double num1sub, double num2sub)
         {
             return num1sub - num2sub;
 
@@ -87,9 +100,21 @@ namespace ConsoleApp1
             return num1mult * num2mult;
 
         }
-        public static string RetornaNomeDePessoa()
+
+        public static double AtribuiNumeroValido(double auxiliar, string entradaDoUsuario)
+
         {
-            return "Rafaela";
+            if (!double.TryParse(entradaDoUsuario, out auxiliar))
+            {
+                Console.WriteLine("O valor digitado é inválido.");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            return auxiliar;
+
         }
+
+
     }
 }
