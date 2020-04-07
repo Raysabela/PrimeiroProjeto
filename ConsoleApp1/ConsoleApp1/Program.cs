@@ -60,7 +60,7 @@ namespace ConsoleApp1
             Console.Write("Digitar o segundo número para multiplicar ");
             numero2multiplica = double.Parse(Console.ReadLine());
             resultadoMultiplicação = MultiplicarDoisNumerosFracionados(numero1multiplica, numero2multiplica);
-            Console.Write("O resultado da multiplicação é: " + resultadoMultiplicação);
+            Console.Write("O resultado da Multiplicação é: " + resultadoMultiplicação);
             Console.ReadKey();
 
 
